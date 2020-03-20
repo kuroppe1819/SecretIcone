@@ -6,7 +6,7 @@ export const DropArea = () => {
     const onDrop = useCallback(acceptedFiles => {
         // Do something with the files
     }, []);
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+    const { getRootProps, getInputProps, isDragActive } = useDropzone(onDrop);
 
     return (
         <div {...getRootProps()}>

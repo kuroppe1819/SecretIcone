@@ -8,7 +8,7 @@ module.exports = {
         contentscript: path.join(__dirname, srcDir + 'contentscript.ts'),
         options: path.join(__dirname, srcDir + 'options/Options.tsx'),
         background: path.join(__dirname, srcDir + 'background.ts'),
-        styles: path.join(__dirname, srcDir + 'scss/styles.scss'),
+        style: path.join(__dirname, srcDir + 'scss/style.scss'),
     },
     output: {
         path: path.join(__dirname, '../dist/'),

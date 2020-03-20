@@ -14,9 +14,6 @@
         "url": "https://github.com/kuroppe1819/kintone-disguise-my-profile"
     },
     "devDependencies": {
-        "@elastic/datemath": "^5.0.2",
-        "@elastic/eui": "^21.1.0",
-        "moment": "^2.24.0",
         "@types/chrome": "0.0.91",
         "@typescript-eslint/eslint-plugin": "^2.24.0",
         "@typescript-eslint/parser": "^2.24.0",
