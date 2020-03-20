@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "kintone-disguise-my-profile",
+  "description": "kintoneのプロフィール画像を自分のお気に入り画像にこっそりすり替えるChrome拡張",
+  "version": "1.0",
+
+  "content_scripts": [
+      {
+          "matches": ["https://bozuman.cybozu.com/k/*", "https://bozuman.s.cybozu.com/k/*"],
+          "js": ["js/content_script.js"],
+          "all_frames": true
+      }
+  ],
+
+  "permissions": [
+    "https://bozuman.cybozu.com/*",
+    "https://bozuman.s.cybozu.com/*"
+  ]
+}
