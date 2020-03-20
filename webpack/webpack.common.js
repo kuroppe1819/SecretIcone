@@ -4,30 +4,25 @@ const srcDir = '../src/';
 
 module.exports = {
     entry: {
-        content_script: path.join(__dirname, srcDir + 'content_script.ts')
+        contentscript: path.join(__dirname, srcDir + 'contentscript.ts'),
+        options: path.join(__dirname, srcDir + 'options.ts'),
+        background: path.join(__dirname, srcDir + 'background.ts'),
     },
     output: {
         path: path.join(__dirname, '../dist/js'),
-        filename: '[name].js'
+        filename: '[name].js',
     },
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 use: 'ts-loader',
-                exclude: /node_modules/
-            }
-        ]
+                exclude: /node_modules/,
+            },
+        ],
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js'],
     },
-    plugins: [
-        // exclude locale files in moment
-        new CopyPlugin([
-            { from: '.', to: '../' }
-          ],
-          {context: 'public' }
-        ),
-    ]
+    plugins: [new CopyPlugin([{ from: '.', to: '../' }], { context: 'public' })],
 };
