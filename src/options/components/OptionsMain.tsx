@@ -8,10 +8,11 @@ export type OptionMainProps = {
     isDragActive: boolean;
     isRejected: boolean;
     imageUrl: string;
+    onClickDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const OptionsMain = (props: OptionMainProps) => {
-    const { rootProps, inputProps } = props;
+    const { rootProps, inputProps, onClickDelete } = props;
     return (
         <div className="options-main">
             <DropArea className={'options-main-drop-area'} {...props} />
@@ -20,7 +21,9 @@ export const OptionsMain = (props: OptionMainProps) => {
                     参照
                     <input {...inputProps} />
                 </label>
-                <button className="options-main__user-select-delete">削除</button>
+                <button className="options-main__user-select-delete" onClick={onClickDelete}>
+                    削除
+                </button>
             </div>
         </div>
     );

@@ -20,6 +20,10 @@ export const OptionsContainer = () => {
         }
     }, []);
 
+    const onClickDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
+        setImageUrl(undefined);
+    };
+
     const options: any = {
         minSize: 0,
         maxSize: 1000000,
@@ -35,6 +39,7 @@ export const OptionsContainer = () => {
         isDragActive: isDragActive,
         isRejected: isRejected,
         imageUrl: imageUrl,
+        onClickDelete: onClickDelete,
     };
 
     return <OptionsMain {...props} />;
