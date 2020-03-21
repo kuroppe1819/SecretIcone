@@ -1,12 +1,16 @@
 .options-main {
-    min-width: 240px;
-    max-width: 360px;
+    padding: 8px;
+}
+
+.options-main-drop-area {
+    margin: 8px auto;
 }
 
 .options-main__user-select {
     display: flex;
     justify-content: space-evenly;
     width: 160px;
+    margin: 0 auto;
 }
 
 .options-main__user-select-upload {
