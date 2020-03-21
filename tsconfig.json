@@ -3,6 +3,7 @@
         "jsx": "react",
         "module": "commonjs",
         "target": "es5",
+        "lib": ["es7", "dom"],
         "noImplicitAny": false,
         "sourceMap": false,
         "rootDir": "src",
