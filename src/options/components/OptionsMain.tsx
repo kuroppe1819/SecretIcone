@@ -6,8 +6,8 @@ export const OptionsMain = () => {
         <div className="options-main">
             <DropArea className={'options-main-drop-area'} />
             <div className="options-main__user-select">
-                <button className="options-main__user-select-upload">UPLOAD</button>
-                <button className="options-main__user-select-delete">DELETE</button>
+                <button className="options-main__user-select-upload">参照</button>
+                <button className="options-main__user-select-delete">削除</button>
             </div>
         </div>
     );
