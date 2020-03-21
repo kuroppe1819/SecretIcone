@@ -5,6 +5,7 @@ const main = () => {
     }
 
     const userIconImageUrl = userPhotoEl.style.backgroundImage;
+    console.log('content_script');
 };
 
 main();
