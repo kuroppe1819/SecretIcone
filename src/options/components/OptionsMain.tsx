@@ -11,11 +11,15 @@ export type OptionMainProps = {
 };
 
 export const OptionsMain = (props: OptionMainProps) => {
+    const { rootProps, inputProps } = props;
     return (
         <div className="options-main">
             <DropArea className={'options-main-drop-area'} {...props} />
             <div className="options-main__user-select">
-                <button className="options-main__user-select-upload">参照</button>
+                <label className="options-main__user-select-upload" {...rootProps}>
+                    参照
+                    <input {...inputProps} />
+                </label>
                 <button className="options-main__user-select-delete">削除</button>
             </div>
         </div>
