@@ -13,6 +13,7 @@
     margin: 0 auto;
 
     &-upload {
+        cursor: pointer;
         background-color: #2196f3;
         color: #e3f2fd;
         outline: none;
@@ -32,6 +33,7 @@
     }
 
     &-delete {
+        cursor: pointer;
         background-color: #f44336;
         color: #ffebee;
         outline: none;
