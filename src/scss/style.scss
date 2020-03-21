@@ -1,5 +1,35 @@
 @import '../../node_modules/modern-normalize/modern-normalize.css';
 
-.hoge {
-    background-color: red;
+.option-main__user-select-upload {
+    background-color: #2196f3;
+    color: #e3f2fd;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    width: 32px;
+    height: 16px;
+    font-size: 6px;
+    padding: 0;
+    box-shadow: 0 0 1px #0d47a1;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+.option-main__user-select-delete {
+    background-color: #f44336;
+    color: #ffebee;
+    outline: none;
+    border: none;
+    border-radius: 2px;
+    width: 32px;
+    height: 16px;
+    font-size: 6px;
+    padding: 0;
+    box-shadow: 0 0 1px #e53935;
+
+    &:hover {
+        opacity: 0.7;
+    }
 }
