@@ -15,7 +15,7 @@
 
     "options_ui": {
         "page": "options.html",
-        "open_in_tab": true
+        "open_in_tab": false
     },
 
     "permissions": ["https://bozuman.cybozu.com/*", "https://bozuman.s.cybozu.com/*", "storage"]
