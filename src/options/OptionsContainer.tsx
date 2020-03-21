@@ -10,11 +10,16 @@ export const OptionsContainer = () => {
     const accept = ['image/gif', 'image/jpeg', 'image/png', 'image/jpg'];
 
     const [isRejected, isRejectedState] = useState(false);
+    const [imageUrl, setImageUrl] = useState(undefined);
 
     const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: File[], event: DropEvent) => {
         if (acceptedFiles.length === 1 && rejectedFiles.length === 0) {
             isRejectedState(false);
-            console.log('drop success');
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImageUrl(reader.result);
+            };
+            reader.readAsDataURL(acceptedFiles[0]);
         } else {
             isRejectedState(true);
         }
@@ -31,6 +36,7 @@ export const OptionsContainer = () => {
     const props: OptionMainProps = {
         options: options,
         isRejected: isRejected,
+        imageUrl: imageUrl,
     };
 
     return <OptionsMain {...props} />;

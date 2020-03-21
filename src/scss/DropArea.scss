@@ -14,9 +14,14 @@
     border: 3px dashed #eeeeee;
 }
 
-.drop-area__input__inside__sample-images {
+.drop-area__input__inside__images {
     display: flex;
     justify-content: space-evenly;
+
+    &__load-image {
+        width: 88px;
+        height: 88px;
+    }
 
     &__jpg {
         width: 30px;
@@ -76,9 +81,14 @@
 }
 
 .drop-area__input__inside--active {
-    border-color: #69f0ae;
+    border-color: #00e676;
+    opacity: 0.7;
 }
 
 .drop-area__input__inside--rejected {
     border-color: #ff1744;
+
+    .drop-area__input__inside__text {
+        color: #ff1744;
+    }
 }
