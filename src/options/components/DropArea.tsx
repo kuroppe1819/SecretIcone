@@ -15,7 +15,6 @@ export type DropAreaProps = {
 const DropAreaInside = (props: DropAreaInsideProps) => {
     const { className, text } = props;
     return (
-        // <div className="drop-area__input__inside drop-area__input__inside--drag-active">
         <div className={className}>
             <div className="drop-area__input__inside__sample-images">
                 <div className="drop-area__input__inside__sample-images__jpg"></div>
@@ -36,12 +35,12 @@ export const DropArea = (props: DropAreaProps) => {
             <input className="drop-area__input" {...getInputProps()} />
             {isDragActive ? (
                 <DropAreaInside
-                    className={'drop-area__input__inside drop-area__input__inside--drag-active'}
+                    className={'drop-area__input__inside drop-area__input__inside--active'}
                     text="ここに画像をドロップします"
                 />
             ) : (
                 <DropAreaInside
-                    className={`drop-area__input__inside${isRejected ? ' drop-area_input__inside--rejected' : ''}`}
+                    className={`drop-area__input__inside${isRejected ? ' drop-area__input__inside--rejected' : ''}`}
                     text={`${isRejected ? '無効なファイルです' : 'ここに画像をドラッグします'}`}
                 />
             )}
