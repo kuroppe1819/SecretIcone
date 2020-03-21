@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { DropzoneOptions } from 'react-dropzone';
+import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 import { DropArea } from './DropArea';
 
 export type OptionMainProps = {
-    options: DropzoneOptions;
+    rootProps: DropzoneRootProps;
+    inputProps: DropzoneInputProps;
+    isDragActive: boolean;
     isRejected: boolean;
     imageUrl: string;
 };

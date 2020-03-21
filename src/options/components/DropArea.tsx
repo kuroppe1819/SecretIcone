@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DropzoneOptions, useDropzone } from 'react-dropzone';
+import { DropzoneInputProps, DropzoneRootProps } from 'react-dropzone';
 
 type DropAreaInsideProps = {
     className: string;
@@ -9,7 +9,9 @@ type DropAreaInsideProps = {
 
 export type DropAreaProps = {
     className: string;
-    options: DropzoneOptions;
+    rootProps: DropzoneRootProps;
+    inputProps: DropzoneInputProps;
+    isDragActive: boolean;
     isRejected: boolean;
     imageUrl: string;
 };
@@ -35,12 +37,11 @@ const DropAreaInside = (props: DropAreaInsideProps) => {
 };
 
 export const DropArea = (props: DropAreaProps) => {
-    const { className, options, isRejected, imageUrl } = props;
-    const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
+    const { className, rootProps, inputProps, isDragActive, isRejected, imageUrl } = props;
 
     return (
-        <div className={`drop-area ${className}`} {...getRootProps()}>
-            <input className="drop-area__input" {...getInputProps()} />
+        <div className={`drop-area ${className}`} {...rootProps}>
+            <input className="drop-area__input" {...inputProps} />
             {isDragActive ? (
                 <DropAreaInside
                     className={'drop-area__input__inside--active'}
