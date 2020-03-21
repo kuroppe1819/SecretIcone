@@ -1,10 +1,15 @@
 import * as React from 'react';
+import { DropzoneOptions } from 'react-dropzone';
 import { DropArea } from './DropArea';
 
-export const OptionsMain = () => {
+export type OptionMainProps = {
+    options: DropzoneOptions;
+};
+
+export const OptionsMain = (props: OptionMainProps) => {
     return (
         <div className="options-main">
-            <DropArea className={'options-main-drop-area'} />
+            <DropArea className={'options-main-drop-area'} {...props} />
             <div className="options-main__user-select">
                 <button className="options-main__user-select-upload">参照</button>
                 <button className="options-main__user-select-delete">削除</button>

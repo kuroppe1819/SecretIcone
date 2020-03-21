@@ -1,21 +1,17 @@
 import * as React from 'react';
-import { useCallback } from 'react';
-import { useDropzone } from 'react-dropzone';
+import { DropzoneOptions, useDropzone } from 'react-dropzone';
 
-type Props = {
+export type DropAreaProps = {
     className: string;
+    options: DropzoneOptions;
 };
 
-export const DropArea = (props: Props) => {
-    const onDrop = useCallback(acceptedFiles => {
-        // Do something with the files
-        console.log(acceptedFiles);
-    }, []);
-    const onDropObj: any = { onDrop: onDrop };
-    const { getRootProps, getInputProps, isDragActive } = useDropzone(onDropObj);
+export const DropArea = (props: DropAreaProps) => {
+    const { className, options } = props;
+    const { getRootProps, getInputProps, isDragActive } = useDropzone(options);
 
     return (
-        <div className={`drop-area ${props.className}`} {...getRootProps()}>
+        <div className={`drop-area ${className}`} {...getRootProps()}>
             <input className="drop-area__input" {...getInputProps()} />
             {isDragActive ? (
                 <div className="drop-area__input__inside">
