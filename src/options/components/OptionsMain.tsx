@@ -4,6 +4,7 @@ import { DropArea } from './DropArea';
 
 export type OptionMainProps = {
     options: DropzoneOptions;
+    isRejected: boolean;
 };
 
 export const OptionsMain = (props: OptionMainProps) => {
