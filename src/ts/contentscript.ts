@@ -1,11 +1,23 @@
-const main = () => {
+import { MutateConvertIcon } from './lib/MutateConvertIcon';
+import { StorageAccess } from './lib/StorageAccess';
+import { extractIdFrom, extractHashFrom } from './lib/ExtractIdentifier';
+
+const main = async () => {
     const userPhotoEl = document.querySelector('.gaia-header-header-user-photo') as HTMLElement;
     if (!userPhotoEl) {
         return;
     }
 
-    const userIconImageUrl = userPhotoEl.style.backgroundImage;
-    console.log('content_script');
+    const toImageUrl = await StorageAccess.getImageUrl();
+    if (toImageUrl === null || toImageUrl === undefined) {
+        return;
+    }
+
+    const userIcon = userPhotoEl.style.backgroundImage;
+    const id = extractIdFrom(userIcon);
+    const hash = extractHashFrom(userIcon);
+    const mutateConvertIcon = new MutateConvertIcon(id, hash, toImageUrl);
+    mutateConvertIcon.appComments();
 };
 
 main();
