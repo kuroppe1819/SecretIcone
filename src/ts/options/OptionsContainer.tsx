@@ -17,7 +17,7 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
             isRejectedState(false);
             const reader = new FileReader();
             reader.onloadend = () => {
-                setImageUrl(reader.result);
+                setImageUrl(reader.result.toString());
             };
             reader.readAsDataURL(acceptedFiles[0]);
         } else {
@@ -42,7 +42,6 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
     useEffect(() => {
         (async (): Promise<void> => {
             await StorageAccess.setImageUrl(imageUrl);
-            console.log(imageUrl);
         })();
     }, [imageUrl]);
 
