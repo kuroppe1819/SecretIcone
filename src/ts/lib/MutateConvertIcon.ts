@@ -21,6 +21,9 @@ export class MutateConvertIcon {
                 const userIconHash = extractHashFrom(userIcon);
                 if (this.id === userIconId && this.hash === userIconHash) {
                     icon.setAttribute('src', this.toImageUrl);
+                    icon.style.width = '36px';
+                    icon.style.height = '36px';
+                    icon.style.backgroundSize = 'contain';
                 }
             }
         };

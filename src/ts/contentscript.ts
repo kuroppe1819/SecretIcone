@@ -16,6 +16,10 @@ const main = async () => {
     const userIcon = userPhotoEl.style.backgroundImage;
     const id = extractIdFrom(userIcon);
     const hash = extractHashFrom(userIcon);
+
+    userPhotoEl.style.backgroundImage = `url('${toImageUrl}')`;
+    userPhotoEl.style.backgroundSize = 'contain';
+
     const mutateConvertIcon = new MutateConvertIcon(id, hash, toImageUrl);
     mutateConvertIcon.appComments();
 };
