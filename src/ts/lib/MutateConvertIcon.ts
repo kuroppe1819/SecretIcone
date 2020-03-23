@@ -48,4 +48,18 @@ export class MutateConvertIcon {
             }
         });
     }
+
+    public threadCommentIcon() {
+        childListObserver('.ocean-ui-comments-commentbase-usericon', icons => {
+            for (const icon of icons) {
+                const userIcon = icon.style.backgroundImage;
+                const userIconId = extractIdFrom(userIcon);
+                const userIconHash = extractHashFrom(userIcon);
+                if (this.id === userIconId && this.hash === userIconHash) {
+                    icon.style.backgroundImage = `url('${this.toImageUrl}')`;
+                    icon.style.backgroundSize = 'contain';
+                }
+            }
+        });
+    }
 }
