@@ -21,9 +21,9 @@ const main = async () => {
     userPhotoEl.style.backgroundSize = 'contain';
 
     const mutateConvertIcon = new MutateConvertIcon(id, hash, toImageUrl);
-    mutateConvertIcon.appComments();
-    mutateConvertIcon.spaceMemberIcon();
-    mutateConvertIcon.threadCommentIcon();
+    mutateConvertIcon.observeAppComments();
+    mutateConvertIcon.observeSpaceMemberIcon();
+    mutateConvertIcon.observeThreadCommentIcon();
 };
 
 main();

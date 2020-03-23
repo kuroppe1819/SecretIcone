@@ -12,7 +12,7 @@ export class MutateConvertIcon {
         this.toImageUrl = toImageUrl;
     }
 
-    public appComments() {
+    public observeAppComments() {
         const mutateIcons = wrappers => {
             for (const wrapper of wrappers) {
                 const icon = wrapper.querySelector('img');
@@ -35,7 +35,7 @@ export class MutateConvertIcon {
         });
     }
 
-    public spaceMemberIcon() {
+    public observeSpaceMemberIcon() {
         childListObserver('.gaia-argoui-panelscrollinglist-icon', icons => {
             for (const icon of icons) {
                 const userIcon = icon.style.backgroundImage;
@@ -49,7 +49,7 @@ export class MutateConvertIcon {
         });
     }
 
-    public threadCommentIcon() {
+    public observeThreadCommentIcon() {
         childListObserver('.ocean-ui-comments-commentbase-usericon', icons => {
             for (const icon of icons) {
                 const userIcon = icon.style.backgroundImage;
