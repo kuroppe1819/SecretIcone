@@ -22,6 +22,7 @@ const main = async () => {
 
     const mutateConvertIcon = new MutateConvertIcon(id, hash, toImageUrl);
     mutateConvertIcon.appComments();
+    mutateConvertIcon.spacePeopleIcon();
 };
 
 main();
