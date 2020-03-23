@@ -26,6 +26,7 @@ const main = async () => {
     mutateConvertIcon.observeAppComments();
     mutateConvertIcon.observeSpaceMemberIcon();
     mutateConvertIcon.observeThreadCommentIcon();
+    mutateConvertIcon.observePeopleUserProfileIcon();
 };
 
 main();

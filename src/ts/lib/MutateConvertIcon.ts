@@ -62,4 +62,18 @@ export class MutateConvertIcon {
             }
         });
     }
+
+    public observePeopleUserProfileIcon() {
+        childListObserver('.gaia-argoui-people-cover-icon', icons => {
+            for (const icon of icons) {
+                const userIcon = icon.style.backgroundImage;
+                const userIconId = extractIdFrom(userIcon);
+                const userIconHash = extractHashFrom(userIcon);
+                if (this.id === userIconId && this.hash === userIconHash) {
+                    icon.style.backgroundImage = `url('${this.toImageUrl}')`;
+                    icon.style.backgroundSize = 'contain';
+                }
+            }
+        });
+    }
 }
