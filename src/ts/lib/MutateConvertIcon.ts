@@ -30,13 +30,13 @@ export class MutateConvertIcon {
         const iconWrapeerClassName = '.itemlist-userImage-gaia';
         const wrappers = document.querySelectorAll(iconWrapeerClassName);
         mutateIcons(wrappers);
-        childListObserver(iconWrapeerClassName, wrappers => {
+        childListObserver(document.body, iconWrapeerClassName, wrappers => {
             mutateIcons(wrappers);
         });
     }
 
     public observeSpaceMemberIcon() {
-        childListObserver('.gaia-argoui-panelscrollinglist-icon', icons => {
+        childListObserver(document.body, '.gaia-argoui-panelscrollinglist-icon', icons => {
             for (const icon of icons) {
                 const userIcon = icon.style.backgroundImage;
                 const userIconId = extractIdFrom(userIcon);
@@ -50,7 +50,7 @@ export class MutateConvertIcon {
     }
 
     public observeThreadCommentIcon() {
-        childListObserver('.ocean-ui-comments-commentbase-usericon', icons => {
+        childListObserver(document.body, '.ocean-ui-comments-commentbase-usericon', icons => {
             for (const icon of icons) {
                 const userIcon = icon.style.backgroundImage;
                 const userIconId = extractIdFrom(userIcon);
@@ -64,7 +64,7 @@ export class MutateConvertIcon {
     }
 
     public observePeopleUserProfileIcon() {
-        childListObserver('.gaia-argoui-people-cover-icon', icons => {
+        childListObserver(document.body, '.gaia-argoui-people-cover-icon', icons => {
             for (const icon of icons) {
                 const userIcon = icon.style.backgroundImage;
                 const userIconId = extractIdFrom(userIcon);
