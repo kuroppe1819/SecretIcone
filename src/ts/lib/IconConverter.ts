@@ -70,4 +70,9 @@ export class IconConverter {
         const nodes = el.querySelectorAll('.gaia-argoui-people-cover-icon');
         this.convertBackgroundOf(nodes);
     }
+
+    public convertSimpleSearchIcon(el: HTMLElement) {
+        const nodes = el.querySelectorAll('.gaia-argoui-common-search-row-user-photo');
+        this.convertBackgroundOf(nodes);
+    }
 }

@@ -26,6 +26,7 @@ const main = async () => {
         iconConverter.convertSpanElementsIn.bind(iconConverter),
         iconConverter.convertThreadCommentIcon.bind(iconConverter),
         iconConverter.convertPeopleUserProfileIcon.bind(iconConverter),
+        iconConverter.convertSimpleSearchIcon.bind(iconConverter),
     ]);
 };
 
