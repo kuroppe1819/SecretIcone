@@ -1,5 +1,5 @@
 {
-    "name": "kintone-disguise-my-profile",
+    "name": "SecretIcone",
     "version": "1.0.0",
     "description": "kintoneのプロフィール画像を自分のお気に入り画像にこっそりすり替えるChrome拡張",
     "main": "index.js",
@@ -11,7 +11,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/kuroppe1819/kintone-disguise-my-profile"
+        "url": "https://github.com/kuroppe1819/SecretIcone"
     },
     "devDependencies": {
         "@types/chrome": "0.0.91",

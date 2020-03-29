@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
 
-    "name": "kintone-disguise-my-profile",
+    "name": "SecretIcone",
     "description": "kintoneのプロフィール画像を自分のお気に入り画像にこっそりすり替えるChrome拡張",
     "version": "1.0",
 
