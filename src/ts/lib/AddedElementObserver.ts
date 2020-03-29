@@ -1,6 +1,6 @@
-type Callback = (childList: HTMLCollectionOf<Element>) => void;
+type Callback = (addedEl: HTMLElement) => void;
 
-export const childListObserver = (targetEl: HTMLElement, tagName: string, callback: Callback) => {
+export const addedElementObserver = (targetEl: HTMLElement, callbackList: Callback[]) => {
     const observer = new MutationObserver((records: MutationRecord[]) => {
         for (const record of records) {
             for (const node of Array.from(record.addedNodes)) {
@@ -8,15 +8,17 @@ export const childListObserver = (targetEl: HTMLElement, tagName: string, callba
                 if (!el.getElementsByTagName) {
                     continue;
                 }
-                const childList: HTMLCollectionOf<Element> = el.getElementsByTagName(tagName);
-                callback(childList as HTMLCollectionOf<Element>);
-
+                for (const callback of callbackList) {
+                    callback(el);
+                }
                 const iframeCollection = el.getElementsByTagName('iframe');
                 for (const iframeEl of Array.from(iframeCollection)) {
                     iframeEl.contentWindow.onload = () => {
-                        if (iframeEl.contentDocument !== null && iframeEl.contentDocument.body !== null) {
-                            childListObserver(iframeEl.contentDocument.body, tagName, callback);
+                        const iframeBody = iframeEl.contentDocument.body;
+                        for (const callback of callbackList) {
+                            callback(iframeBody);
                         }
+                        addedElementObserver(iframeBody, callbackList);
                     };
                 }
             }

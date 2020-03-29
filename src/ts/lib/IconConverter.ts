@@ -11,7 +11,8 @@ export class IconConverter {
         this.toImageUrl = toImageUrl;
     }
 
-    public convertImgElements(collection: HTMLCollectionOf<Element>) {
+    public convertImgElementsIn(el: HTMLElement) {
+        const collection = el.getElementsByTagName('img');
         for (const el of Array.from(collection)) {
             const imgEl = el as HTMLImageElement;
             const userIcon = imgEl.getAttribute('src');
@@ -19,7 +20,6 @@ export class IconConverter {
             const userIconHash = extractHashFrom(userIcon);
 
             if (userIconId === null || userIconHash === null || this.id !== userIconId || this.hash !== userIconHash) {
-                console.log(imgEl);
                 continue;
             }
 
@@ -39,13 +39,13 @@ export class IconConverter {
         }
     }
 
-    public convertSpanElements(collection: HTMLCollectionOf<Element>) {
+    public convertSpanElementsIn(el: HTMLElement) {
+        const collection = el.getElementsByTagName('span');
         for (const el of Array.from(collection)) {
             const spanEl = el as HTMLSpanElement;
             const userIcon = spanEl.style.backgroundImage;
             const userIconId = extractIdFrom(userIcon);
             const userIconHash = extractHashFrom(userIcon);
-            console.log(spanEl);
             if (this.id === userIconId && this.hash === userIconHash) {
                 spanEl.style.backgroundImage = `url('${this.toImageUrl}')`;
                 spanEl.style.backgroundSize = 'contain';

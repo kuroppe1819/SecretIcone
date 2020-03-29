@@ -7,3 +7,8 @@ export const extractHashFrom = (imageUrl: string): string => {
     const matchArray = imageUrl.match(/^.*hash=(\w+)\&.*$/);
     return matchArray ? matchArray[1] : null;
 };
+
+export const extractSizeFrom = (imageUrl: string): string => {
+    const matchArray = imageUrl.match(/^.*size=(\w+)\&.*$/);
+    return matchArray ? matchArray[1] : null;
+};
