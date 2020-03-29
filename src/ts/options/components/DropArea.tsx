@@ -27,9 +27,9 @@ const DropAreaInside = (props: DropAreaInsideProps) => {
                 ) : (
                     <>
                         <div className="drop-area__input__inside__images__jpg"></div>
-                        <div className="drop-area__input__inside__images__jpeg"></div>
                         <div className="drop-area__input__inside__images__png"></div>
                         <div className="drop-area__input__inside__images__gif"></div>
+                        <div className="drop-area__input__inside__images__svg"></div>
                     </>
                 )}
             </div>

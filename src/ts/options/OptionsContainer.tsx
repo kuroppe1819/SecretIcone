@@ -5,7 +5,7 @@ import { DropEvent, useDropzone } from 'react-dropzone';
 import { StorageAccess } from '../lib/StorageAccess';
 
 enum DropAreaText {
-    DROP_INVALID_FILES = 'このファイルは無効です',
+    DROP_INVALID_FILES = '無効なファイルです',
     DROP_MULTIPLE_FILES = '複数のファイルをドロップできません',
     DRAG_HERE = 'ここに画像をドラッグします',
     DRAG_ACTIVE = 'ここに画像をドロップします',
@@ -51,7 +51,7 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
     const options: any = {
         minSize: 0,
         maxSize: 5242880, // storageに保存できる最大容量。 sync: 102400 byte, local, 5242880 byte
-        accept: ['image/gif', 'image/jpeg', 'image/png', 'image/jpg'],
+        accept: ['image/gif', 'image/jpeg', 'image/png', 'image/svg+xml'],
         noClick: true,
         onDrop: onDrop,
     };
