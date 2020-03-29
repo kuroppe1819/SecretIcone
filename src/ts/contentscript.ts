@@ -1,14 +1,10 @@
-import { MutateConvertIcon } from './lib/MutateConvertIcon';
+import { extractHashFrom, extractIdFrom } from './lib/ExtractIdentifier';
 import { StorageAccess } from './lib/StorageAccess';
-import { extractIdFrom, extractHashFrom } from './lib/ExtractIdentifier';
-
-const replaceIcon = (el: HTMLElement, toImageUrl: string) => {
-    el.style.backgroundImage = `url('${toImageUrl}')`;
-    el.style.backgroundSize = 'contain';
-};
+import { childListObserver } from './lib/ChildListObserver';
+import { IconConverter } from './lib/IconConverter';
 
 const main = async () => {
-    const userPhotoEl = document.querySelector('.gaia-header-header-user-photo') as HTMLElement;
+    const userPhotoEl = document.querySelector('.gaia-header-header-user-photo') as HTMLSpanElement;
     if (!userPhotoEl) {
         return;
     }
@@ -17,17 +13,19 @@ const main = async () => {
     if (toImageUrl === null || toImageUrl === undefined) {
         return;
     }
+
     const userIcon = userPhotoEl.style.backgroundImage;
     const id = extractIdFrom(userIcon);
     const hash = extractHashFrom(userIcon);
-
-    replaceIcon(userPhotoEl, toImageUrl); // ヘッダーの画像を置き換える
-    const mutateConvertIcon = new MutateConvertIcon(id, hash, toImageUrl);
-    // mutateConvertIcon.observeSpaceMemberIcon();
-    // mutateConvertIcon.observeThreadCommentIcon();
-    // mutateConvertIcon.observePeopleUserProfileIcon();
-    // mutateConvertIcon.observeAppComments();
-    mutateConvertIcon.observeImgTag();
+    const imgTagName = 'img';
+    const spanTagName = 'span';
+    const imgCollection = document.getElementsByTagName(imgTagName);
+    const spanCollection = document.getElementsByTagName(spanTagName);
+    const iconConverter = new IconConverter(id, hash, toImageUrl);
+    iconConverter.convertImgElements(imgCollection);
+    iconConverter.convertSpanElements(spanCollection);
+    childListObserver(document.body, imgTagName, iconConverter.convertImgElements.bind(iconConverter));
+    childListObserver(document.body, spanTagName, iconConverter.convertSpanElements.bind(iconConverter));
 };
 
 main();

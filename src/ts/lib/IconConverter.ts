@@ -1,7 +1,6 @@
-import { childListObserver } from './ChildListObserver';
-import { extractIdFrom, extractHashFrom } from './ExtractIdentifier';
+import { extractHashFrom, extractIdFrom } from './ExtractIdentifier';
 
-export class MutateConvertIcon {
+export class IconConverter {
     private id;
     private hash;
     private toImageUrl;
@@ -12,38 +11,46 @@ export class MutateConvertIcon {
         this.toImageUrl = toImageUrl;
     }
 
-    public observeImgTag() {
-        const convertIconFunc = (collection: HTMLCollectionOf<Element>) => {
-            for (const el of Array.from(collection)) {
-                const imgEl = el as HTMLImageElement;
-                const userIcon = imgEl.getAttribute('src');
-                const userIconId = extractIdFrom(userIcon);
-                const userIconHash = extractHashFrom(userIcon);
+    public convertImgElements(collection: HTMLCollectionOf<Element>) {
+        for (const el of Array.from(collection)) {
+            const imgEl = el as HTMLImageElement;
+            const userIcon = imgEl.getAttribute('src');
+            const userIconId = extractIdFrom(userIcon);
+            const userIconHash = extractHashFrom(userIcon);
 
-                if (
-                    userIconId === null ||
-                    userIconHash === null ||
-                    this.id !== userIconId ||
-                    this.hash !== userIconHash
-                ) {
-                    continue;
-                }
-
-                const tmpHeight = imgEl.getAttribute('height');
-                const tmpWidth = imgEl.getAttribute('width');
-                imgEl.setAttribute('src', this.toImageUrl);
-                imgEl.style.backgroundSize = 'contain';
-                if (tmpHeight !== null && tmpWidth !== null) {
-                    imgEl.setAttribute('height', tmpHeight);
-                    imgEl.setAttribute('width', tmpWidth);
-                } else {
-                    imgEl.style.height = '36px';
-                    imgEl.style.width = '36px';
-                }
+            if (userIconId === null || userIconHash === null || this.id !== userIconId || this.hash !== userIconHash) {
+                console.log(imgEl);
+                continue;
             }
-        };
-        convertIconFunc(document.getElementsByTagName('img'));
-        childListObserver(document.body, 'img', convertIconFunc);
+
+            const tmpHeight = imgEl.getAttribute('height');
+            const tmpWidth = imgEl.getAttribute('width');
+            imgEl.setAttribute('src', this.toImageUrl);
+            imgEl.style.backgroundSize = 'contain';
+            if (tmpHeight !== null && tmpWidth !== null) {
+                imgEl.setAttribute('height', tmpHeight);
+                imgEl.setAttribute('width', tmpWidth);
+            } else {
+                imgEl.style.height = '36px';
+                imgEl.style.width = '36px';
+                // normal 36px
+                // small 24px
+            }
+        }
+    }
+
+    public convertSpanElements(collection: HTMLCollectionOf<Element>) {
+        for (const el of Array.from(collection)) {
+            const spanEl = el as HTMLSpanElement;
+            const userIcon = spanEl.style.backgroundImage;
+            const userIconId = extractIdFrom(userIcon);
+            const userIconHash = extractHashFrom(userIcon);
+            console.log(spanEl);
+            if (this.id === userIconId && this.hash === userIconHash) {
+                spanEl.style.backgroundImage = `url('${this.toImageUrl}')`;
+                spanEl.style.backgroundSize = 'contain';
+            }
+        }
     }
 
     // public observeSpaceMemberIcon() {
