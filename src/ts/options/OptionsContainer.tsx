@@ -4,25 +4,42 @@ import { OptionsMain, OptionMainProps } from './components/OptionsMain';
 import { DropEvent, useDropzone } from 'react-dropzone';
 import { StorageAccess } from '../lib/StorageAccess';
 
+enum DropAreaText {
+    DROP_INVALID_FILES = 'このファイルは無効です',
+    DROP_MULTIPLE_FILES = '複数のファイルをドロップできません',
+    DRAG_HERE = 'ここに画像をドラッグします',
+    DRAG_ACTIVE = 'ここに画像をドロップします',
+}
+
 export type OptionsContainerProps = {
     initImageUrl: string | null;
 };
 
 export const OptionsContainer = (props: OptionsContainerProps) => {
-    const [isRejected, isRejectedState] = useState(false);
+    const [isRejected, setIsRejected] = useState(false);
     const [imageUrl, setImageUrl] = useState(props.initImageUrl);
+    const [dropAreaText, setDropAreaText] = useState(DropAreaText.DRAG_HERE);
 
     const onDrop = useCallback((acceptedFiles: File[], rejectedFiles: File[], event: DropEvent) => {
-        if (acceptedFiles.length === 1 && rejectedFiles.length === 0) {
-            isRejectedState(false);
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImageUrl(reader.result.toString());
-            };
-            reader.readAsDataURL(acceptedFiles[0]);
-        } else {
-            isRejectedState(true);
+        if (rejectedFiles.length > 0) {
+            setIsRejected(true);
+            setDropAreaText(DropAreaText.DROP_INVALID_FILES);
+            return;
         }
+
+        if (acceptedFiles.length !== 1) {
+            setIsRejected(true);
+            setDropAreaText(DropAreaText.DROP_MULTIPLE_FILES);
+            return;
+        }
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setImageUrl(reader.result.toString());
+            setIsRejected(false);
+            setDropAreaText(DropAreaText.DRAG_HERE);
+        };
+        reader.readAsDataURL(acceptedFiles[0]);
     }, []);
 
     const onClickDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -45,6 +62,12 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
         })();
     }, [imageUrl]);
 
+    useEffect(() => {
+        if (isDragActive) {
+            setDropAreaText(DropAreaText.DRAG_ACTIVE);
+        }
+    }, [isDragActive]);
+
     const optionsMainProps: OptionMainProps = {
         rootProps: getRootProps(),
         inputProps: getInputProps(),
@@ -52,6 +75,7 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
         isRejected: isRejected,
         imageUrl: imageUrl,
         onClickDelete: onClickDelete,
+        dropAreaText: dropAreaText,
     };
 
     return <OptionsMain {...optionsMainProps} />;

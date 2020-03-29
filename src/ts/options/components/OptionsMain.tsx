@@ -8,6 +8,7 @@ export type OptionMainProps = {
     isDragActive: boolean;
     isRejected: boolean;
     imageUrl: string;
+    dropAreaText: string;
     onClickDelete: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
