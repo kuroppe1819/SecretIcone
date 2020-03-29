@@ -8,8 +8,7 @@
     "content_scripts": [
         {
             "matches": ["https://bozuman.cybozu.com/k/*", "https://bozuman.s.cybozu.com/k/*"],
-            "js": ["js/ContentScript.js"],
-            "all_frames": true
+            "js": ["js/ContentScript.js"]
         }
     ],
 
