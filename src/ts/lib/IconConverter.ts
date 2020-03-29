@@ -16,9 +16,12 @@ export class IconConverter {
         for (const el of Array.from(collection)) {
             const imgEl = el as HTMLImageElement;
             const userIcon = imgEl.getAttribute('src');
+            if (userIcon === null) {
+                continue;
+            }
+
             const userIconId = extractIdFrom(userIcon);
             const userIconHash = extractHashFrom(userIcon);
-
             if (userIconId === null || userIconHash === null || this.id !== userIconId || this.hash !== userIconHash) {
                 continue;
             }
