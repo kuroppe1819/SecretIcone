@@ -1,4 +1,5 @@
-import { extractHashFrom, extractIdFrom } from './ExtractIdentifier';
+import { extractHashFrom, extractIdFrom, extractSizeFrom } from './ExtractIdentifier';
+import { getIconSizeFrom } from './GetIconSizeFrom';
 
 export class IconConverter {
     private id;
@@ -34,10 +35,10 @@ export class IconConverter {
                 imgEl.setAttribute('height', tmpHeight);
                 imgEl.setAttribute('width', tmpWidth);
             } else {
-                imgEl.style.height = '36px';
-                imgEl.style.width = '36px';
-                // normal 36px
-                // small 24px
+                const userIconSize = extractSizeFrom(userIcon);
+                const iconSize = getIconSizeFrom(userIconSize);
+                imgEl.style.height = iconSize.height;
+                imgEl.style.width = iconSize.width;
             }
         }
     }
