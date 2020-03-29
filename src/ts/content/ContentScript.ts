@@ -1,7 +1,7 @@
-import { extractHashFrom, extractIdFrom } from './lib/ExtractIdentifier';
-import { IconConverter } from './lib/IconConverter';
-import { StorageAccess } from './lib/StorageAccess';
-import { addedElementObserver } from './lib/AddedElementObserver';
+import { extractHashFrom, extractIdFrom } from '../lib/ExtractIdentifier';
+import { IconConverter } from '../lib/IconConverter';
+import { StorageAccess } from '../lib/StorageAccess';
+import { addedElementObserver } from '../lib/AddedElementObserver';
 
 const main = async () => {
     const userPhotoEl = document.querySelector('.gaia-header-header-user-photo') as HTMLSpanElement;
