@@ -44,6 +44,8 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
 
     const onClickDelete = (event: React.MouseEvent<HTMLButtonElement>) => {
         setImageUrl(null);
+        setIsRejected(false);
+        setDropAreaText(DropAreaText.DRAG_HERE);
     };
 
     const options: any = {
