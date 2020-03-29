@@ -24,6 +24,8 @@ const main = async () => {
     addedElementObserver(body, [
         iconConverter.convertImgElementsIn.bind(iconConverter),
         iconConverter.convertSpanElementsIn.bind(iconConverter),
+        iconConverter.convertThreadCommentIcon.bind(iconConverter),
+        iconConverter.convertPeopleUserProfileIcon.bind(iconConverter),
     ]);
 };
 

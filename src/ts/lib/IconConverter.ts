@@ -43,59 +43,31 @@ export class IconConverter {
         }
     }
 
-    public convertSpanElementsIn(el: HTMLElement) {
-        const collection = el.getElementsByTagName('span');
-        for (const el of Array.from(collection)) {
-            const spanEl = el as HTMLSpanElement;
-            const userIcon = spanEl.style.backgroundImage;
+    private convertBackgroundOf(nodesOrCollection: NodeList | HTMLCollectionOf<Element>) {
+        for (const node of Array.from(nodesOrCollection)) {
+            const iconEl = node as HTMLElement;
+            const userIcon = iconEl.style.backgroundImage;
             const userIconId = extractIdFrom(userIcon);
             const userIconHash = extractHashFrom(userIcon);
             if (this.id === userIconId && this.hash === userIconHash) {
-                spanEl.style.backgroundImage = `url('${this.toImageUrl}')`;
-                spanEl.style.backgroundSize = 'contain';
+                iconEl.style.backgroundImage = `url('${this.toImageUrl}')`;
+                iconEl.style.backgroundSize = 'contain';
             }
         }
     }
 
-    // public observeSpaceMemberIcon() {
-    //     childListObserver(document.body, '.gaia-argoui-panelscrollinglist-icon', icons => {
-    //         for (const icon of icons) {
-    //             const userIcon = icon.style.backgroundImage;
-    //             const userIconId = extractIdFrom(userIcon);
-    //             const userIconHash = extractHashFrom(userIcon);
-    //             if (this.id === userIconId && this.hash === userIconHash) {
-    //                 icon.style.backgroundImage = `url('${this.toImageUrl}')`;
-    //                 icon.style.backgroundSize = 'contain';
-    //             }
-    //         }
-    //     });
-    // }
+    public convertSpanElementsIn(el: HTMLElement) {
+        const collection = el.getElementsByTagName('span');
+        this.convertBackgroundOf(collection);
+    }
 
-    // public observeThreadCommentIcon() {
-    //     childListObserver(document.body, '.ocean-ui-comments-commentbase-usericon', icons => {
-    //         for (const icon of icons) {
-    //             const userIcon = icon.style.backgroundImage;
-    //             const userIconId = extractIdFrom(userIcon);
-    //             const userIconHash = extractHashFrom(userIcon);
-    //             if (this.id === userIconId && this.hash === userIconHash) {
-    //                 icon.style.backgroundImage = `url('${this.toImageUrl}')`;
-    //                 icon.style.backgroundSize = 'contain';
-    //             }
-    //         }
-    //     });
-    // }
+    public convertThreadCommentIcon(el: HTMLElement) {
+        const nodes = el.querySelectorAll('.ocean-ui-comments-commentbase-usericon');
+        this.convertBackgroundOf(nodes);
+    }
 
-    // public observePeopleUserProfileIcon() {
-    //     childListObserver(document.body, '.gaia-argoui-people-cover-icon', icons => {
-    //         for (const icon of icons) {
-    //             const userIcon = icon.style.backgroundImage;
-    //             const userIconId = extractIdFrom(userIcon);
-    //             const userIconHash = extractHashFrom(userIcon);
-    //             if (this.id === userIconId && this.hash === userIconHash) {
-    //                 icon.style.backgroundImage = `url('${this.toImageUrl}')`;
-    //                 icon.style.backgroundSize = 'contain';
-    //             }
-    //         }
-    //     });
-    // }
+    public convertPeopleUserProfileIcon(el: HTMLElement) {
+        const nodes = el.querySelectorAll('.gaia-argoui-people-cover-icon');
+        this.convertBackgroundOf(nodes);
+    }
 }
