@@ -66,7 +66,10 @@ export const OptionsContainer = (props: OptionsContainerProps) => {
 
     useEffect(() => {
         if (isDragActive) {
+            setIsRejected(false);
             setDropAreaText(DropAreaText.DRAG_ACTIVE);
+        } else {
+            setDropAreaText(DropAreaText.DRAG_HERE);
         }
     }, [isDragActive]);
 
