@@ -1,15 +1,9 @@
-export const extractIdFrom = (imageUrl: string): string => {
-    try {
-        return imageUrl.match(/^.*id=(\w+)\&.*$/)[1];
-    } catch {
-        throw new Error('Not found id in url');
-    }
+export const extractIdFrom = (imageUrl: string): string | null => {
+    const matchArray = imageUrl.match(/^.*id=(\w+)\&.*$/);
+    return matchArray ? matchArray[1] : null;
 };
 
 export const extractHashFrom = (imageUrl: string): string => {
-    try {
-        return imageUrl.match(/^.*hash=(\w+)\&.*$/)[1];
-    } catch {
-        throw new Error('Not found hash in url');
-    }
+    const matchArray = imageUrl.match(/^.*hash=(\w+)\&.*$/);
+    return matchArray ? matchArray[1] : null;
 };

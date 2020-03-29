@@ -23,10 +23,11 @@ const main = async () => {
 
     replaceIcon(userPhotoEl, toImageUrl); // ヘッダーの画像を置き換える
     const mutateConvertIcon = new MutateConvertIcon(id, hash, toImageUrl);
-    mutateConvertIcon.observeSpaceMemberIcon();
-    mutateConvertIcon.observeThreadCommentIcon();
-    mutateConvertIcon.observePeopleUserProfileIcon();
-    mutateConvertIcon.observeAppComments();
+    // mutateConvertIcon.observeSpaceMemberIcon();
+    // mutateConvertIcon.observeThreadCommentIcon();
+    // mutateConvertIcon.observePeopleUserProfileIcon();
+    // mutateConvertIcon.observeAppComments();
+    mutateConvertIcon.observeImgTag();
 };
 
 main();
