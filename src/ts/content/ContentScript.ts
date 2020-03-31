@@ -21,6 +21,8 @@ const main = async () => {
     const iconConverter = new IconConverter(id, hash, toImageUrl);
     iconConverter.convertImgElementsIn(body);
     iconConverter.convertSpanElementsIn(body);
+    iconConverter.convertThreadCommentIcon(body);
+    iconConverter.convertPeopleUserProfileIcon(body);
     addedElementObserver(body, [
         iconConverter.convertImgElementsIn.bind(iconConverter),
         iconConverter.convertSpanElementsIn.bind(iconConverter),
