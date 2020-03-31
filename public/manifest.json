@@ -19,5 +19,5 @@
         "page": "options.html",
         "open_in_tab": true
     },
-    "permissions": ["https://bozuman.cybozu.com/k/*", "https://bozuman.s.cybozu.com/k/*", "storage"]
+    "permissions": ["https://*.cybozu.com/k/*", "storage"]
 }
