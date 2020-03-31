@@ -4,6 +4,7 @@
 ### SecretIcone
 
 kintone のプロフィール画像を自分のお気に入りの画像にすり替える Chrome 拡張
+
 </div>
 
 ## Usage
@@ -12,10 +13,14 @@ kintone のプロフィール画像を自分のお気に入りの画像にすり
 
 2. オプション画面を開いてアイコンを設定する
 
-3. kintoneの画面をリロードする
+3. kintone の画面をリロードする
 
 ## License
 
 Copyright (c) 2020 kuroppe1819
 
 Licensed under the <a href="LICENSE">MIT</a> license.
+
+## Disclaimer
+
+This OSS is my own personal work and does not have any relationship with Cybozu, Inc. or any other organization which I belong to.
