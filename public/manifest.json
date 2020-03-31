@@ -11,7 +11,7 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://bozuman.cybozu.com/k/*", "https://bozuman.s.cybozu.com/k/*"],
+            "matches": ["https://*.cybozu.com/k/*"],
             "js": ["js/ContentScript.js"]
         }
     ],
