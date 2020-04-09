@@ -17,6 +17,10 @@ const main = async () => {
     const userIcon = userPhotoEl.style.backgroundImage;
     const id = extractIdFrom(userIcon);
     const hash = extractHashFrom(userIcon);
+    if (id === null || hash === null) {
+        return;
+    }
+
     const body = document.body;
     const iconConverter = new IconConverter(id, hash, toImageUrl);
     iconConverter.convertImgElementsIn(body);
