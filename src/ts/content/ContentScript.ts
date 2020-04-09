@@ -18,6 +18,14 @@ const main = async () => {
     const id = extractIdFrom(userIcon);
     const hash = extractHashFrom(userIcon);
     if (id === null || hash === null) {
+        const isShowConfirm = await StorageAccess.getShowConfirmFlag();
+        if (isShowConfirm === undefined || isShowConfirm) {
+            if (
+                confirm('cybozu.comでプロフィール画像を設定した場合のみ、SecretIconeで設定した画像が有効になります。')
+            ) {
+                await StorageAccess.setShowConfirmFlag(false);
+            }
+        }
         return;
     }
 
